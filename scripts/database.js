@@ -8,21 +8,23 @@ const database = {
         id: 6, name: "Deez Nuts", img:"https://i3.wp.com/lmld.org/wp-content/uploads/2011/10/Peanut-Butter-Ice-Cream-12.jpg", price: 8.50, description: "Deez Nuts features a peanut butter ice cream swirled with chocolatey waffle cone pieces and a fudge swirl.",
         id: 7, name: "Berry Bitty City", img:"https://www.allrecipes.com/thmb/pH8hoFfytcOT9XVK1DSmxv3L0OU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/140877-easy-eggless-strawberry-ice-cream-ddmfs-3x4-1-092e4d11b59049c8b3843014ea3c57f2.jpg", price: 8.50, description: " Red, ripe, juicy strawberries churned and frozen with some fresh cream and a bit of sugar is all that is needed to make a delicious Berry Bitty City ice cream."}
     ],
+    locations: [
+		{
+			id: 1,
+			name: "Main Street",
+		},
+		{
+			id: 2,
+			name: "Arena",
+		},
+		{
+			id: 3,
+			name: "Club Strip",
+		},
+		{
+			id: 4,
+			name: "Farmers Market",
+		},
+	],
     transientState: {}
-}
-
-export const setLocation = (locationId) => {
-    database.transientState.selectedLocation = locationId
-    document.dispatchEvent( new CustomEvent("stateChanged") )
-}
-
-export const getLocations = () => {
-    return database.getLocations.map(f => ({...f}))
-}
-
-export const completeOrder = () => {
-
-        // Broadcast custom event to entire documement so that the
-        // application can re-render and update state
-        document.dispatchEvent( new CustomEvent("stateChanged") )
 }
