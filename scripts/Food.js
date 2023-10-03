@@ -43,8 +43,6 @@ export const FoodDropDowns = () => {
 
 document.addEventListener("change", (e) => {
 	if (e.target.id.startsWith("food")) {
-		if (e.target.value > 0) {
-			setFood(parseInt(e.target.value));
-		}
+		setFood(parseInt(e.target.value));
 	}
 });

@@ -22,9 +22,7 @@ export const WellHawtDawgs = () => {
 
 document.addEventListener("change", (e) => {
 	if (e.target.id.startsWith("locations")) {
-		if (e.target.value > 0) {
-			setLocation(parseInt(e.target.value));
-		}
+		setLocation(parseInt(e.target.value));
 		const foodDropdown = document.querySelector("#food");
 		foodDropdown.value = 0;
 	}
