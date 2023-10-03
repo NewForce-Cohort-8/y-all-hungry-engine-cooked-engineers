@@ -1,5 +1,7 @@
 import { Locations } from "./Locations.js";
 import { IceCreams } from "./IceCream.js";
+import { Drinks } from "./Drinks.js";
+import { Toys } from "./Toys.js"
 
 export const WellHawtDawgs = () => {
 	return `

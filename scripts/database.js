@@ -77,7 +77,7 @@ export const database = {
             desc: "Literally nothing to drink? OK psycho. It's free but still.",
             price: 0
         }
-]
+],
 toys : [
     {id: 1, name:"Moon Shoes", img:"https://i.ebayimg.com/images/g/JM0AAOSwOGtgCuYu/s-l1600.jpg", price:10, desc:"Moon Shoes! They make you jump like you're on the moon!"},
 {id:2, name:"Gas-Powered Pogo Stick", img:"https://images-stag.jazelc.com/uploads/theautopian-m2en/hop-rod-topshot.jpg", price: 75, desc:"Ankle snapping pogo power!"},

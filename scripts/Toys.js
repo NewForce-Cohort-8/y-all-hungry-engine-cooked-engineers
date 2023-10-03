@@ -25,7 +25,7 @@ export const Toys = () => {
 };
 
 document.addEventListener("change", (e) => {
-	if (e.target.id.startsWith("locations")) {
+	if (e.target.id.startsWith("toys")) {
 		if (e.target.value > 0) {
 			setToys(parseInt(e.target.value));
 		}
