@@ -8,7 +8,7 @@ export const WellHawtDawgs = () => {
     ${Locations()}
     
     <h2> Ice Cream Options </h2>
-    ${IceCreams()}; 
+    ${IceCreams()} 
     
     <h2> Drink Options </h2>
     ${Drinks()}
