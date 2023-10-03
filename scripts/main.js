@@ -11,6 +11,11 @@ const renderAllHTML = () => {
 	if (currentState.selectedLocation >= 1) {
 		locationsDropdown.value = currentState.selectedLocation;
 	}
+
+	const iceCreamDropdown = document.querySelector("#iceCream");
+	if (currentState.selectedIceCream >= 1) {
+		iceCreamDropdown.value = currentState.selectedIceCream;
+	}
 };
 
 renderAllHTML();
