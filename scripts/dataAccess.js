@@ -28,12 +28,13 @@ export const completeOrder = () => {
 	document.dispatchEvent(new CustomEvent("stateChanged"));
 };
 
+
 export const getToys = () => {
-    return database.getToys.map(f => ({...f}))
+    return database.toys.map(f => ({...f}))
 }
 
-export const setToys = (toyid) => {
-	database.transientState.selectedToy= toyid;
+export const setToys = (toyId) => {
+	database.transientState.selectedToy= toyId;
 	document.dispatchEvent(new CustomEvent("stateChanged"));
 	
 }

@@ -1,5 +1,6 @@
 import { Locations } from "./Locations.js";
 import { IceCreams } from "./IceCream.js";
+import { Toys } from "./Toys.js";
 
 export const WellHawtDawgs = () => {
 	return `
@@ -7,6 +8,9 @@ export const WellHawtDawgs = () => {
     ${Locations()}
     
     <h2> Ice Cream Options </h2>
-    ${IceCreams()}; `
+    ${IceCreams()}
     
+    <h2> Toy Options </h2>
+    ${Toys()}
+`
 };
