@@ -9,6 +9,14 @@ export const setLocation = (locationId) => {
 export const getLocations = () => {
 	return database.locations.map((f) => ({ ...f }));
 };
+export const setIceCream = (iceCreamId) => {
+	database.transientState.selectedIceCream = iceCreamId;
+	document.dispatchEvent(new CustomEvent("stateChanged"));
+};
+
+export const getIceCream = () => {
+	return database.iceCream.map((f) => ({ ...f }));
+};
 
 //set and get food items
 export const getFood = () => {
