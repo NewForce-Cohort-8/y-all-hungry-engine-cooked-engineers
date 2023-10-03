@@ -18,3 +18,13 @@ export const completeOrder = () => {
 	// application can re-render and update state
 	document.dispatchEvent(new CustomEvent("stateChanged"));
 };
+
+export const getToys = () => {
+    return database.getToys.map(f => ({...f}))
+}
+
+export const setToys = (toyid) => {
+	database.transientState.selectedToy= toyid;
+	document.dispatchEvent(new CustomEvent("stateChanged"));
+	
+}

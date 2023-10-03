@@ -20,16 +20,14 @@ const database = {
 	],
 
 	toys : [
-        {id: 1, name:"Moon Shoes", img:"", price:10, desc:"Moon Shoes! They make you jump like you're on the moon!"},
-    {id:2, name:"Gas-Powered Pogo Stick", img:"", price: 75, desc:"Ankle snapping pogo power!"},
-    {id:3, name:"Portable Ouija Board", img:"", price:2, desc:"For consulting demons on the go!" },
-    {id:4, name:"Box O'Rocks", img:"", price:5, desc:"Definitely not from the parking lot!"},
-    {id:5, name:"Hot Dawg Launcher", img:"", price:35, desc:"For eating Dawgs at a distance!"}
+        {id: 1, name:"Moon Shoes", img:"https://i.ebayimg.com/images/g/JM0AAOSwOGtgCuYu/s-l1600.jpg", price:10, desc:"Moon Shoes! They make you jump like you're on the moon!"},
+    {id:2, name:"Gas-Powered Pogo Stick", img:"https://images-stag.jazelc.com/uploads/theautopian-m2en/hop-rod-topshot.jpg", price: 75, desc:"Ankle snapping pogo power!"},
+    {id:3, name:"Portable Ouija Board", img:"https://www.baltimoremagazine.com/wp-content/uploads/2019/06/ouija-main-1000x600.jpg", price:2, desc:"For consulting demons on the go!" },
+    {id:4, name:"Box O'Rocks", img:"https://thumbs.dreamstime.com/z/box-rocks-isolated-white-corrugated-cardboard-holds-several-colorful-small-rock-parcels-background-37986604.jpg?w=768", price:5, desc:"Definitely not from the parking lot!"},
+    {id:5, name:"Hot Dawg Launcher", img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Milkor_MGL.jpg/440px-Milkor_MGL.jpg", price:35, desc:"For eating Dawgs at a distance!"}
 ]
 }
 
-export const getToys = () => {
-    return database.getToys.map(f => ({...f}))
 
 export const setLocation = (locationId) => {
     database.transientState.selectedLocation = locationId
