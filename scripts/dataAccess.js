@@ -9,6 +9,7 @@ export const setLocation = (locationId) => {
 export const getLocations = () => {
 	return database.locations.map((f) => ({ ...f }));
 };
+
 //set and get icecreams
 export const setIceCream = (iceCreamId) => {
 	database.transientState.selectedIceCream = iceCreamId;
@@ -29,6 +30,10 @@ export const setFood = (foodId) => {
 };
 export const getLocationFood = () => {
 	return database.locationFood.map((f) => ({ ...f }));
+};
+
+export const getLocationIceCream = () => {
+	return database.locationIceCream.map((f) => ({ ...f }));
 };
 
 //set and get drink items
@@ -58,6 +63,8 @@ const makeMenuesForLocations = () => {
 	//get info from database
 	const locations = getLocations();
 	const food = getFood();
+	const icecreams = getIceCream();
+
 	//iterate through locations in database
 	for (const location of locations) {
 		//iterate through food in database
@@ -76,6 +83,16 @@ const makeMenuesForLocations = () => {
 			foodItemForThisLocation.quantity = makeQuantity(0, 30);
 			//push object to the the bridge table array
 			database.locationFood.push(foodItemForThisLocation);
+		}
+
+		for (const icecream of icecreams) {
+			const icecreamForLocations = getLocationIceCream();
+			let icecreamItemForThisLocation = {};
+			icecreamItemForThisLocation.id = makeId(icecreamForLocations);
+			icecreamItemForThisLocation.locationid = location.id
+			icecreamItemForThisLocation.icecreamId = icecream.id
+			icecreamItemForThisLocation.quantity = makeQuantity(0, 50);
+			database.locationIceCream.push(icecreamItemForThisLocation);
 		}
 	}
 };

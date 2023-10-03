@@ -24,7 +24,6 @@ export const WellHawtDawgs = () => {
     ${Toys()}
 `
     
-
 };
 
 document.addEventListener("change", (e) => {
@@ -32,5 +31,8 @@ document.addEventListener("change", (e) => {
 		setLocation(parseInt(e.target.value));
 		const foodDropdown = document.querySelector("#food");
 		foodDropdown.value = 0;
+        const icecreamDropDown = document.querySelector('#iceCream');
+        icecreamDropDown.value = 0;
 	}
+   
 });
