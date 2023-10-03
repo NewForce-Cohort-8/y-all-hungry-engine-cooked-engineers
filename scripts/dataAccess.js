@@ -9,6 +9,15 @@ export const getLocations = () => {
 	return database.locations.map((f) => ({ ...f }));
 };
 
+export const setIceCream = (iceCreamId) => {
+	database.transientState.selectedIceCream = iceCreamId;
+	document.dispatchEvent(new CustomEvent("stateChanged"));
+};
+
+export const getIceCream = () => {
+	return database.iceCream.map((f) => ({ ...f }));
+};
+
 export const getTransientState = () => {
 	return { ...database.transientState };
 };
