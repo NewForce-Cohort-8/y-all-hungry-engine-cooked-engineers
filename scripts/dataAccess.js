@@ -31,6 +31,10 @@ export const getLocationFood = () => {
 	return database.locationFood.map((f) => ({ ...f }));
 };
 
+export const getLocationDrink = () => {
+	return database.locationDrinks.map((f) => ({...f}));
+}
+
 //set and get drink items
 export const setDrink = (drinkId) => {
 	database.transientState.selectedDrink = drinkId;
@@ -58,6 +62,7 @@ const makeMenuesForLocations = () => {
 	//get info from database
 	const locations = getLocations();
 	const food = getFood();
+	const drinks = getDrinks();
 	//iterate through locations in database
 	for (const location of locations) {
 		//iterate through food in database
@@ -76,6 +81,16 @@ const makeMenuesForLocations = () => {
 			foodItemForThisLocation.quantity = makeQuantity(0, 30);
 			//push object to the the bridge table array
 			database.locationFood.push(foodItemForThisLocation);
+		}
+
+		for (const drink of drinks) {
+			const drinkForLocations = getLocationDrink();
+			let drinkItemForThisLocation = {};
+			drinkItemForThisLocation.id = makeId(drinkForLocations);
+			drinkItemForThisLocation.locationId = location.id;
+			drinkItemForThisLocation.drinkId = drink.id;
+			drinkItemForThisLocation.quantity = makeQuantity(0, 55);
+			database.locationDrinks.push(drinkItemForThisLocation);
 		}
 	}
 };

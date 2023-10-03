@@ -31,6 +31,8 @@ document.addEventListener("change", (e) => {
 	if (e.target.id.startsWith("locations")) {
 		setLocation(parseInt(e.target.value));
 		const foodDropdown = document.querySelector("#food");
+        const drinksDropdown = document.querySelector("#drinks");
 		foodDropdown.value = 0;
+        drinksDropdown.value = 0;
 	}
 });
