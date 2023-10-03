@@ -2,14 +2,6 @@ import { getLocations, setLocation } from "./dataAccess.js";
 
 const locations = getLocations();
 
-const displayLocations = () => {
-	return locations
-		.map((location) => {
-			return `<option value="${location.id} id="location--${location.id}" class="option dropdown">${location.name}</option>`;
-		})
-		.join("");
-};
-
 export const Locations = () => {
 	return `<section id="location--section">
         <label for="locations">Select a location for your order</label>
@@ -23,11 +15,3 @@ export const Locations = () => {
         </select>
     </section>`;
 };
-
-document.addEventListener("change", (e) => {
-	if (e.target.id.startsWith("locations")) {
-		if (e.target.value > 0) {
-			setLocation(parseInt(e.target.value));
-		}
-	}
-});
