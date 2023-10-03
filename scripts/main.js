@@ -21,6 +21,11 @@ const renderAllHTML = () => {
 	if (currentState.selectedDrink >= 1) {
 		drinksDropdown.value = currentState.selectedDrink;
 	}
+
+	const toysDropdown = document.querySelector("#toys");
+	if (currentState.selectedToy >= 1) {
+		toysDropdown.value = currentState.selectedToy;
+	}
 };
 
 renderAllHTML();
