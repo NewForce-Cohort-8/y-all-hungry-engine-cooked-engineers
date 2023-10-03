@@ -15,11 +15,3 @@ export const Locations = () => {
         </select>
     </section>`;
 };
-
-document.addEventListener("change", (e) => {
-	if (e.target.id.startsWith("locations")) {
-		if (e.target.value > 0) {
-			setLocation(parseInt(e.target.value));
-		}
-	}
-});

@@ -13,6 +13,8 @@ const renderAllHTML = () => {
 	const foodDropdown = document.querySelector("#food");
 	if (currentState.selectedFood >= 1) {
 		foodDropdown.value = currentState.selectedFood;
+	} else if (!currentState.selectedFood) {
+		foodDropdown.value = 0;
 	}
 	const iceCreamDropdown = document.querySelector("#iceCream");
 	if (currentState.selectedIceCream >= 1) {
