@@ -1,4 +1,22 @@
 const database = {
+    locations: [
+		{
+			id: 1,
+			name: "Main Street",
+		},
+		{
+			id: 2,
+			name: "Arena",
+		},
+		{
+			id: 3,
+			name: "Club Strip",
+		},
+		{
+			id: 4,
+			name: "Farmers Market",
+		},
+	],
     drinks: [
         { 
             id: 1,
@@ -43,18 +61,3 @@ const database = {
     transientState: {}
 }
 
-export const setLocation = (locationId) => {
-    database.transientState.selectedLocation = locationId
-    document.dispatchEvent( new CustomEvent("stateChanged") )
-}
-
-export const getLocations = () => {
-    return database.getLocations.map(f => ({...f}))
-}
-
-export const completeOrder = () => {
-
-        // Broadcast custom event to entire documement so that the
-        // application can re-render and update state
-        document.dispatchEvent( new CustomEvent("stateChanged") )
-}
