@@ -12,5 +12,6 @@ export const WellHawtDawgs = () => {
     
     <h2> Drink Options </h2>
     ${Drinks()}
+    
     ` 
 };
