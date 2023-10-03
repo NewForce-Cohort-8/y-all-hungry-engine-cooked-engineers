@@ -3,6 +3,8 @@ import { IceCreams } from "./IceCream.js";
 import { Drinks } from "./Drinks.js";
 import { FoodDropDowns } from "./Food.js";
 import { setLocation } from "./dataAccess.js";
+import { Toys } from "./Toys.js"
+
 
 export const WellHawtDawgs = () => {
 	return `
@@ -17,7 +19,12 @@ export const WellHawtDawgs = () => {
     
     <h2>Drink Options</h2>
     ${Drinks()}
-    `;
+    
+    <h2> Toy Options </h2>
+    ${Toys()}
+`
+    
+
 };
 
 document.addEventListener("change", (e) => {
