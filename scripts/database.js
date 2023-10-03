@@ -29,7 +29,6 @@ export const database = {
 		},
 	],
     transientState: {},
-    
     drinks: [
         { 
             id: 1,
