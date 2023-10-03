@@ -68,6 +68,14 @@ export const database = {
             img: "../images/hotdogwater.jpg",
             desc: "Listen, this tastes bad and is gross, but that doesn't mean we won't sell it as our most expensive drink. Come and get it ya lil freaks!!!",
             price: 3.99
+        },
+
+        {
+            id: 6,
+            name: "None",
+            img: "",
+            desc: "Literally nothing to drink? OK psycho. It's free but still.",
+            price: 0
         }
 ]
 }
