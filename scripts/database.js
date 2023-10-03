@@ -1,3 +1,4 @@
+
 export const database = {
 	transientState: {},
 	locations: [
@@ -19,3 +20,5 @@ export const database = {
 		},
 	],
 };
+
+
