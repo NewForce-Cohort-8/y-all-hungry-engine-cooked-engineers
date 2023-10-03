@@ -28,50 +28,10 @@ export const setFood = (foodId) => {
 	document.dispatchEvent(new CustomEvent("stateChanged"));
 };
 export const getLocationFood = () => {
-	return database.locationFood.map((food) => ({ ...food }));
-};
-//make menu for each Location
-
-const makeMenuesForLocations = () => {
-	//generate random number function
-	const makeQuantity = (min, max) => {
-		return Math.floor(Math.random() * (max - min + 1) + min);
-	};
-	//get info from database
-	const locations = getLocations();
-	const foodForLocations = getLocationFood();
-	const food = getFood();
-	//iterate through locations in database
-	for (const location of locations) {
-		//iterate through food in database
-		for (const foodItem of food) {
-			//declare empty food item object
-			let foodItemForThisLocation = {};
-			//check to see if food items for location has anything in it
-			if ((foodForLocations.length = 0)) {
-				//if not id = 1
-				foodItemForThisLocation.id = 1;
-			} else if (foodForLocations.length > 0) {
-				//if so id = the id of the last index of the array + 1
-				foodItemForThisLocation.id =
-					foodForLocations[foodForLocations.length - 1].id + 1;
-			}
-			//set locationId
-			foodItemForThisLocation.locationId = location.id;
-			//set foodId
-			foodItemForThisLocation.foodId = foodItem.id;
-			//set quantity to random number between 0 - 30
-			foodItemForThisLocation.quantity = makeQuantity(0, 30);
-			//push object to the the bridge table array
-			foodForLocations.push(foodItemForThisLocation);
-		}
-	}
+	return database.locationFood.map((f) => ({ ...f }));
 };
 
-makeMenuesForLocations();
-//get food for each Location
-
-//get transient state
+//set and get drink items
 export const setDrink = (drinkId) => {
 	database.transientState.selectedDrink = drinkId;
 	document.dispatchEvent(new CustomEvent("stateChanged"));
@@ -81,6 +41,47 @@ export const getDrinks = () => {
 	return database.drinks.map((f) => ({ ...f }));
 };
 
+const makeId = (arr) => {
+	if (arr.length === 0) {
+		return 1;
+	} else if (arr.length > 0) {
+		return arr[arr.length - 1].id + 1;
+	}
+};
+
+//make menu for each Location
+const makeMenuesForLocations = () => {
+	//generate random number function
+	const makeQuantity = (min, max) => {
+		return Math.floor(Math.random() * (max - min + 1) + min);
+	};
+	//get info from database
+	const locations = getLocations();
+	const food = getFood();
+	//iterate through locations in database
+	for (const location of locations) {
+		//iterate through food in database
+		for (const foodItem of food) {
+			//get destination array
+			const foodForLocations = getLocationFood();
+			//declare empty food item object
+			let foodItemForThisLocation = {};
+			//set item id
+			foodItemForThisLocation.id = makeId(foodForLocations);
+			//set locationId
+			foodItemForThisLocation.locationId = location.id;
+			//set foodId
+			foodItemForThisLocation.foodId = foodItem.id;
+			//set quantity to random number between 0 - 30
+			foodItemForThisLocation.quantity = makeQuantity(0, 30);
+			//push object to the the bridge table array
+			database.locationFood.push(foodItemForThisLocation);
+		}
+	}
+};
+
+makeMenuesForLocations();
+//get transient state
 export const getTransientState = () => {
 	return { ...database.transientState };
 };
