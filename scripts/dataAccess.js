@@ -18,6 +18,15 @@ export const getIceCream = () => {
 	return database.iceCream.map((f) => ({ ...f }));
 };
 
+export const setDrink = (drinkId) => {
+	database.transientState.selectedDrink = drinkId;
+	document.dispatchEvent(new CustomEvent("stateChanged"));
+}
+
+export const getDrinks = () => {
+	return database.drinks.map((f) => ({...f}));
+}
+
 export const getTransientState = () => {
 	return { ...database.transientState };
 };

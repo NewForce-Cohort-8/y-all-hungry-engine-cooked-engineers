@@ -29,14 +29,61 @@ export const database = {
         {id: 7, name: "Berry Bitty City", img:"https://www.allrecipes.com/thmb/pH8hoFfytcOT9XVK1DSmxv3L0OU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/140877-easy-eggless-strawberry-ice-cream-ddmfs-3x4-1-092e4d11b59049c8b3843014ea3c57f2.jpg", price: 8.50, description: " Red, ripe, juicy strawberries churned and frozen with some fresh cream and a bit of sugar is all that is needed to make a delicious Berry Bitty City ice cream."},
         {id:8, name: "None", img: "", price: 0.00, description: "none"}
     ],
-    toys : [
-        {id: 1, name:"Moon Shoes", img:"https://i.ebayimg.com/images/g/JM0AAOSwOGtgCuYu/s-l1600.jpg", price:10, desc:"Moon Shoes! They make you jump like you're on the moon!"},
-    {id:2, name:"Gas-Powered Pogo Stick", img:"https://images-stag.jazelc.com/uploads/theautopian-m2en/hop-rod-topshot.jpg", price: 75, desc:"Ankle snapping pogo power!"},
-    {id:3, name:"Portable Ouija Board", img:"https://www.baltimoremagazine.com/wp-content/uploads/2019/06/ouija-main-1000x600.jpg", price:2, desc:"For consulting demons on the go!" },
-    {id:4, name:"Box O'Rocks", img:"https://thumbs.dreamstime.com/z/box-rocks-isolated-white-corrugated-cardboard-holds-several-colorful-small-rock-parcels-background-37986604.jpg?w=768", price:5, desc:"Definitely not from the parking lot!"},
-    {id:5, name:"Hot Dawg Launcher", img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Milkor_MGL.jpg/440px-Milkor_MGL.jpg", price:35, desc:"For eating Dawgs at a distance!"}
+    drinks: [
+        { 
+            id: 1,
+            name: "Coke",
+            img: "../images/fk53061red-1.jpg",
+            desc: "Yo this coke really be cokin' tho",
+            price: 1.99
+        },
+
+        {
+            id: 2,
+            name: "Diet Coke",
+            img: "../images/dietcoke.jpg",
+            desc: "Yo this diet coke really be cokin' tho, but in a diet kinda way",
+            price: 1.99
+        },
+
+        {
+            id: 3,
+            name: "Mountain Dew",
+            img: "../images/mtndew.jpg",
+            desc: "Yo you tellin' me this dew really be from a mountain? You bet your booty it is! Also its original catchphrase said it'll tickle your innards, so there's that too.",
+            price: 1.99
+        },
+
+        {
+            id: 4,
+            name: "Bottled Water",
+            img: "../images/bottlewater.jpg",
+            desc: "Yo this water truly be bottled tho, marvel that the magic of science and engineering, how did we even get this water in there??? that's why it's $3",
+            price: 2.99
+        },
+
+        {
+            id: 5,
+            name: "Hot Dog Water",
+            img: "../images/hotdogwater.jpg",
+            desc: "Listen, this tastes bad and is gross, but that doesn't mean we won't sell it as our most expensive drink. Come and get it ya lil freaks!!!",
+            price: 3.99
+        },
+
+        {
+            id: 6,
+            name: "None",
+            img: "",
+            desc: "Literally nothing to drink? OK psycho. It's free but still.",
+            price: 0
+        }
 ]
-
-};
-
-
+toys : [
+    {id: 1, name:"Moon Shoes", img:"https://i.ebayimg.com/images/g/JM0AAOSwOGtgCuYu/s-l1600.jpg", price:10, desc:"Moon Shoes! They make you jump like you're on the moon!"},
+{id:2, name:"Gas-Powered Pogo Stick", img:"https://images-stag.jazelc.com/uploads/theautopian-m2en/hop-rod-topshot.jpg", price: 75, desc:"Ankle snapping pogo power!"},
+{id:3, name:"Portable Ouija Board", img:"https://www.baltimoremagazine.com/wp-content/uploads/2019/06/ouija-main-1000x600.jpg", price:2, desc:"For consulting demons on the go!" },
+{id:4, name:"Box O'Rocks", img:"https://thumbs.dreamstime.com/z/box-rocks-isolated-white-corrugated-cardboard-holds-several-colorful-small-rock-parcels-background-37986604.jpg?w=768", price:5, desc:"Definitely not from the parking lot!"},
+{id:5, name:"Hot Dawg Launcher", img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Milkor_MGL.jpg/440px-Milkor_MGL.jpg", price:35, desc:"For eating Dawgs at a distance!"}
+]
+   
+}
