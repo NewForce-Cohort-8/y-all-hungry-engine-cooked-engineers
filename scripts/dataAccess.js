@@ -89,7 +89,7 @@ const makeMenuesForLocations = () => {
 			const icecreamForLocations = getLocationIceCream();
 			let icecreamItemForThisLocation = {};
 			icecreamItemForThisLocation.id = makeId(icecreamForLocations);
-			icecreamItemForThisLocation.locationid = location.id
+			icecreamItemForThisLocation.locationId = location.id
 			icecreamItemForThisLocation.icecreamId = icecream.id
 			icecreamItemForThisLocation.quantity = makeQuantity(0, 50);
 			database.locationIceCream.push(icecreamItemForThisLocation);

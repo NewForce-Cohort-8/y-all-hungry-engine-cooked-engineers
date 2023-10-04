@@ -12,9 +12,9 @@ export const IceCreams = () => {
               .map((thisIceCream) => {
                 const state = getTransientState();
                 const matchedIceCream = IceCream.find(
-                  (thatIceCream) => thatIceCream.id === thisIceCream.iceCreamId
+                  (thatIceCream) => thatIceCream.id === thisIceCream.icecreamId
                 );
-                if (state.selectedLocation > 0) {
+                if (state.selectedLocation) {
                   if (
                     state.selectedLocation === thisIceCream.locationId &&
                     thisIceCream.quantity > 0 &&
