@@ -32,8 +32,13 @@ export const getLocationFood = () => {
 	return database.locationFood.map((f) => ({ ...f }));
 };
 
+
 export const getLocationIceCream = () => {
 	return database.locationIceCream.map((f) => ({ ...f }));
+};
+
+export const getLocationDrink = () => {
+	return database.locationDrinks.map((f) => ({...f}));
 };
 
 //set and get drink items
@@ -64,7 +69,8 @@ const makeMenuesForLocations = () => {
 	const locations = getLocations();
 	const food = getFood();
 	const icecreams = getIceCream();
-
+	const drinks = getDrinks();
+  
 	//iterate through locations in database
 	for (const location of locations) {
 		//iterate through food in database
@@ -85,6 +91,7 @@ const makeMenuesForLocations = () => {
 			database.locationFood.push(foodItemForThisLocation);
 		}
 
+
 		for (const icecream of icecreams) {
 			const icecreamForLocations = getLocationIceCream();
 			let icecreamItemForThisLocation = {};
@@ -93,6 +100,15 @@ const makeMenuesForLocations = () => {
 			icecreamItemForThisLocation.icecreamId = icecream.id
 			icecreamItemForThisLocation.quantity = makeQuantity(0, 50);
 			database.locationIceCream.push(icecreamItemForThisLocation);
+
+		for (const drink of drinks) {
+			const drinkForLocations = getLocationDrink();
+			let drinkItemForThisLocation = {};
+			drinkItemForThisLocation.id = makeId(drinkForLocations);
+			drinkItemForThisLocation.locationId = location.id;
+			drinkItemForThisLocation.drinkId = drink.id;
+			drinkItemForThisLocation.quantity = makeQuantity(0, 55);
+			database.locationDrinks.push(drinkItemForThisLocation);
 		}
 	}
 };
@@ -102,6 +118,10 @@ makeMenuesForLocations();
 export const getTransientState = () => {
 	return { ...database.transientState };
 };
+
+export const resetTransientState = () => {
+	database.transientState = {};
+}
 
 export const completeOrder = () => {
 	// Broadcast custom event to entire documement so that the
