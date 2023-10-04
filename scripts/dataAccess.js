@@ -117,7 +117,7 @@ const makeMenuesForLocations = () => {
 			toyItemForThisLocation.toyId = toy.id;
 			toyItemForThisLocation.quantity = makeQuantity(0, 45);
 			database.locationToys.push(toyItemForThisLocation);
-
+		}
 
 		for (const icecream of icecreams) {
 			const icecreamForLocations = getLocationIceCream();
@@ -127,6 +127,7 @@ const makeMenuesForLocations = () => {
 			icecreamItemForThisLocation.icecreamId = icecream.id
 			icecreamItemForThisLocation.quantity = makeQuantity(0, 50);
 			database.locationIceCream.push(icecreamItemForThisLocation);
+		}
 
 		for (const drink of drinks) {
 			const drinkForLocations = getLocationDrink();
@@ -155,3 +156,4 @@ export const completeOrder = () => {
 	// application can re-render and update state
 	document.dispatchEvent(new CustomEvent("stateChanged"));
 };
+
