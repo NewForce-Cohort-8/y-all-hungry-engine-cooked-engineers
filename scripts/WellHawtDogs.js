@@ -2,7 +2,7 @@ import { Locations } from "./Locations.js";
 import { IceCreams } from "./IceCream.js";
 import { Drinks } from "./Drinks.js";
 import { FoodDropDowns } from "./Food.js";
-import { setLocation } from "./dataAccess.js";
+import { setLocation, resetTransientState } from "./dataAccess.js";
 import { Toys } from "./Toys.js"
 
 
@@ -29,8 +29,7 @@ export const WellHawtDawgs = () => {
 
 document.addEventListener("change", (e) => {
 	if (e.target.id.startsWith("locations")) {
+        resetTransientState();
 		setLocation(parseInt(e.target.value));
-		const foodDropdown = document.querySelector("#food");
-		foodDropdown.value = 0;
 	}
 });
