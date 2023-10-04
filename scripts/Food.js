@@ -6,6 +6,7 @@ import {
 } from "./dataAccess.js";
 const foodForLocations = getLocationFood();
 const allFood = getFood();
+
 export const FoodDropDowns = () => {
 	//get info from database
 
@@ -19,7 +20,7 @@ export const FoodDropDowns = () => {
 						const matchedFood = allFood.find(
 							(thatFood) => thatFood.id === thisFood.foodId
 						);
-						if (state.selectedLocation > 0) {
+						if (state.selectedLocation) {
 							if (
 								state.selectedLocation === thisFood.locationId &&
 								thisFood.quantity > 0 &&
