@@ -6,6 +6,7 @@ import {
 } from "./dataAccess.js";
 const foodForLocations = getLocationFood();
 const allFood = getFood();
+
 export const FoodDropDowns = () => {
 	//get info from database
 

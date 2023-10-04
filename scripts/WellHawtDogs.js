@@ -24,7 +24,6 @@ export const WellHawtDawgs = () => {
     ${Toys()}
 `
     
-
 };
 
 document.addEventListener("change", (e) => {
@@ -32,4 +31,5 @@ document.addEventListener("change", (e) => {
         resetTransientState();
 		setLocation(parseInt(e.target.value));
 	}
+   
 });
