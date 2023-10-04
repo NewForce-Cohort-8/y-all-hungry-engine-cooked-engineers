@@ -101,6 +101,10 @@ export const getTransientState = () => {
 	return { ...database.transientState };
 };
 
+export const resetTransientState = () => {
+	database.transientState = {};
+}
+
 export const completeOrder = () => {
 	// Broadcast custom event to entire documement so that the
 	// application can re-render and update state

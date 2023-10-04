@@ -14,7 +14,7 @@ export const Drinks = () => {
                     const matchedDrink = drinks.find(
                         (thatDrink) => thatDrink.id === thisDrink.drinkId
                     );
-                    if (state.selectedLocation > 0) {
+                    if (state.selectedLocation) {
                         if (
                             state.selectedLocation === thisDrink.locationId &&
                             thisDrink.quantity > 0 &&
