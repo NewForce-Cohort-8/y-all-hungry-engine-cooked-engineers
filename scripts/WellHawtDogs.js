@@ -2,8 +2,9 @@ import { Locations } from "./Locations.js";
 import { IceCreams } from "./IceCream.js";
 import { Drinks } from "./Drinks.js";
 import { FoodDropDowns } from "./Food.js";
+import { ToysDropDowns } from "./Toys.js"
 import { setLocation, resetTransientState } from "./dataAccess.js";
-import { Toys } from "./Toys.js"
+
 
 
 export const WellHawtDawgs = () => {
@@ -21,7 +22,7 @@ export const WellHawtDawgs = () => {
     ${Drinks()}
     
     <h2> Toy Options </h2>
-    ${Toys()}
+    ${ToysDropDowns()}
 `
     
 };

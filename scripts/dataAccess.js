@@ -33,6 +33,8 @@ export const getLocationFood = () => {
 };
 
 
+
+
 export const getLocationIceCream = () => {
 	return database.locationIceCream.map((f) => ({ ...f }));
 };
@@ -40,6 +42,7 @@ export const getLocationIceCream = () => {
 export const getLocationDrink = () => {
 	return database.locationDrinks.map((f) => ({...f}));
 };
+
 
 //set and get drink items
 export const setDrink = (drinkId) => {
@@ -49,6 +52,19 @@ export const setDrink = (drinkId) => {
 
 export const getDrinks = () => {
 	return database.drinks.map((f) => ({ ...f }));
+};
+
+export const getToys = () => {
+    return database.toys.map(f => ({...f}))
+};
+
+export const setToys = (toyId) => {
+	database.transientState.selectedToy= toyId;
+	document.dispatchEvent(new CustomEvent("stateChanged"));
+	
+};
+export const getLocationToys = () => {
+	return database.locationToys.map((f) => ({ ...f }));
 };
 
 const makeId = (arr) => {
@@ -68,9 +84,11 @@ const makeMenuesForLocations = () => {
 	//get info from database
 	const locations = getLocations();
 	const food = getFood();
+	const toys = getToys()
 	const icecreams = getIceCream();
 	const drinks = getDrinks();
   
+
 	//iterate through locations in database
 	for (const location of locations) {
 		//iterate through food in database
@@ -90,6 +108,15 @@ const makeMenuesForLocations = () => {
 			//push object to the the bridge table array
 			database.locationFood.push(foodItemForThisLocation);
 		}
+
+		for (const toy of toys) {
+			const toyForLocations = getLocationToys();
+			let toyItemForThisLocation = {};
+			toyItemForThisLocation.id = makeId(toyForLocations);
+			toyItemForThisLocation.locationId =location.id;
+			toyItemForThisLocation.toyId = toy.id;
+			toyItemForThisLocation.quantity = makeQuantity(0, 45);
+			database.locationToys.push(toyItemForThisLocation);
 
 
 		for (const icecream of icecreams) {
@@ -128,14 +155,3 @@ export const completeOrder = () => {
 	// application can re-render and update state
 	document.dispatchEvent(new CustomEvent("stateChanged"));
 };
-
-
-export const getToys = () => {
-    return database.toys.map(f => ({...f}))
-}
-
-export const setToys = (toyId) => {
-	database.transientState.selectedToy= toyId;
-	document.dispatchEvent(new CustomEvent("stateChanged"));
-	
-}
