@@ -11,7 +11,7 @@ export const FoodDropDowns = () => {
 	//get info from database
 
 	return `<section id="food--section">
-    <label for="food">Select a location for your order</label>
+    <label for="food">Select food for your order</label>
     <select name="food" id="food" class="options dropdown">
         <option value="0" class="option dropdown">Food Items</option>
         ${foodForLocations
