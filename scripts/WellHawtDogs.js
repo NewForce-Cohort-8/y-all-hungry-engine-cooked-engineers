@@ -3,7 +3,7 @@ import { IceCreams } from "./IceCream.js";
 import { Drinks } from "./Drinks.js";
 import { FoodDropDowns } from "./Food.js";
 import { setLocation } from "./dataAccess.js";
-import { Toys } from "./Toys.js"
+import { ToysDropDowns } from "./Toys.js"
 
 
 export const WellHawtDawgs = () => {
@@ -21,7 +21,7 @@ export const WellHawtDawgs = () => {
     ${Drinks()}
     
     <h2> Toy Options </h2>
-    ${Toys()}
+    ${ToysDropDowns()}
 `
     
 
@@ -31,6 +31,8 @@ document.addEventListener("change", (e) => {
 	if (e.target.id.startsWith("locations")) {
 		setLocation(parseInt(e.target.value));
 		const foodDropdown = document.querySelector("#food");
+        const toysDropdown = document.querySelector("#toys");
 		foodDropdown.value = 0;
 	}
+   
 });

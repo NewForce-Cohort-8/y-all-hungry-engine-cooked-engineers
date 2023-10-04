@@ -1,6 +1,7 @@
 export const database = {
 	transientState: {},
 	locationFood: [],
+	locationToys: [],
 	locations: [
 		{
 			id: 1,

@@ -1,6 +1,7 @@
-import { getToys, setToys } from "./dataAccess.js";
+import { getLocationToys, setToys, getToys, getTransientState } from "./dataAccess.js";
 
-const toys = getToys();
+const allToys = getToys();
+const toysForLocations = getLocationToys();
 
 const displayToys = () => {
 	return toys
@@ -10,16 +11,34 @@ const displayToys = () => {
 		.join("");
 };
 
-export const Toys = () => {
+export const ToysDropDowns = () => {
 	return `<section id="toy--section">
         <label for="toys">Select a toy for your order</label>
         <select name="toys" id="toys" class="options dropdown">
             <option value="0" class="option dropdown">Toys</option>
-            ${toys
-							.map((toy) => {
-								return `<option value="${toy.id}" class="option dropdown">${toy.name}</option>`;
-							})
-							.join("")}
+            ${toysForLocations
+				.map((thisToy) => {
+					const state = getTransientState();
+					const matchedToys = allToys.find(
+						(thatToy) => thatToy.id === thisToy.toyId
+					);
+					if (state.selectedLocation) {
+						if (
+							state.selectedLocation === thisToy.locationId &&
+							thisToy.quantity > 0 &&
+							matchedToys.name.toLowerCase() !== "none"
+						) {
+							return `<option value="${thisToy.id}" class="option dropdown">${matchedToys.name} (${thisToy.quantity})</option>`;
+						}
+						if (
+							matchedToys.name.toLowerCase() === "none" &&
+							state.selectedLocation === thisToy.locationId
+						) {
+							return `<option value="${thisToy.id}" class="option dropdown">${matchedToys.name}</option>`;
+						}
+					}
+				})
+				.join("")}
         </select>
     </section>`;
 };
