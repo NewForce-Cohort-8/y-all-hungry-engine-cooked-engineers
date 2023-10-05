@@ -2,10 +2,14 @@ import { Locations } from "./Locations.js";
 import { IceCreams } from "./IceCream.js";
 import { Drinks } from "./Drinks.js";
 import { FoodDropDowns } from "./Food.js";
-import { ToysDropDowns } from "./Toys.js"
-import { setLocation, resetTransientState } from "./dataAccess.js";
-
-
+import { ToysDropDowns } from "./Toys.js";
+import { Cart } from "./Cart.js";
+import {
+	setLocation,
+	resetTransientState,
+	resetCart,
+	getTransientState,
+} from "./dataAccess.js";
 
 export const WellHawtDawgs = () => {
 	return `
@@ -21,16 +25,18 @@ export const WellHawtDawgs = () => {
     <h2>Drink Options</h2>
     ${Drinks()}
     
-    <h2> Toy Options </h2>
+    <h2>Toy Options</h2>
     ${ToysDropDowns()}
-`
-    
+
+    <h2>Cart</h2>
+    ${Cart()}
+`;
 };
 
 document.addEventListener("change", (e) => {
 	if (e.target.id.startsWith("locations")) {
-        resetTransientState();
+		resetTransientState();
 		setLocation(parseInt(e.target.value));
 	}
-   
+	resetCart();
 });
