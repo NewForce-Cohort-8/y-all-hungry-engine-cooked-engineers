@@ -215,12 +215,13 @@ export const resetCart = () => {
 export const cartSum = (obj) => {
 	//get the cart
 	const cart = getCart();
+	console.log(obj);
 	//check to see if object has a food id
 	if (Object.hasOwn(obj, "foodId")) {
 		//if it does, filter the cart to find matches to that object
 		let foodCount = cart.filter((cartItem) => {
 			if (
-				cartItem.selectedFood === obj.foodId &&
+				cartItem.selectedFood === obj.id &&
 				cartItem.selectedLocation === obj.locationId
 			) {
 				//if it is a match return true
@@ -238,7 +239,7 @@ export const cartSum = (obj) => {
 	if (Object.hasOwn(obj, "drinkId")) {
 		let drinkCount = cart.filter((cartItem) => {
 			if (
-				cartItem.selectedDrink === obj.drinkId &&
+				cartItem.selectedDrink === obj.id &&
 				cartItem.selectedLocation === obj.locationId
 			) {
 				return true;
@@ -251,7 +252,7 @@ export const cartSum = (obj) => {
 	if (Object.hasOwn(obj, "icecreamId")) {
 		let iceCreamCount = cart.filter((cartItem) => {
 			if (
-				cartItem.selectedIceCream === obj.icecreamId &&
+				cartItem.selectedIceCream === obj.id &&
 				cartItem.selectedLocation === obj.locationId
 			) {
 				return true;
@@ -264,7 +265,7 @@ export const cartSum = (obj) => {
 	if (Object.hasOwn(obj, "toyId")) {
 		let toyCount = cart.filter((cartItem) => {
 			if (
-				cartItem.selectedToy === obj.toyId &&
+				cartItem.selectedToy === obj.id &&
 				cartItem.selectedLocation === obj.locationId
 			) {
 				return true;
