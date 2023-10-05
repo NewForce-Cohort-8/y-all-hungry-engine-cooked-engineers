@@ -6,19 +6,6 @@ import { ToysDropDowns } from "./Toys.js"
 import {completeOrder, setLocation, getLocationDrink, getLocationFood, getLocationIceCream, getLocationToys, resetTransientState, getTransientState, makeId } from "./dataAccess.js";
 import { placeOrder } from "./Orders.js";
 
-const menuDrinks = getLocationDrink();
-const menuToys = getLocationToys();
-const menuFoods = getLocationFood();
-const menuIceCreams = getLocationIceCream();
-
-
-console.log(
-    menuFoods,
-    menuIceCreams,
-    menuDrinks,
-    menuToys
-)
-
 export const WellHawtDawgs = () => {
 	return `
     <h1>Well HOT Dawgs!</h1>
@@ -52,6 +39,8 @@ document.addEventListener("change", (e) => {
 
 document.addEventListener("click", (e) => {
     if (e.target.id === "order-btn") {
-    completeOrder();
+    const doesThisWork = completeOrder();
+    const orderSummary = document.getElementById("order-summary");
+	orderSummary.innerHTML = doesThisWork;
     }
 })

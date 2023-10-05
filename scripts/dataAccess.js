@@ -167,37 +167,46 @@ export const completeOrder = () => {
     order.name = `Order #${order.orderId}`
     order.timestamp = Date.now();
     database.orders.push(order);
+	let html = ``;
+	for (const food of foods) {
+        if (food.locationId === customOrder.selectedLocation && food.id === customOrder.selectedFood) {
+            database.locationFood[food.id - 1].quantity -= 1;
+            customOrder.price += database.food[food.foodId - 1].price;
+			customOrder.selectedFoodName = database.food[food.foodId - 1].name;
+			html += `You ordered ${customOrder.selectedFoodName} hot dog, `
+        }
+    }
     for (const drink of drinks) {
         if (drink.locationId === customOrder.selectedLocation && drink.id === customOrder.selectedDrink) {
             database.locationDrinks[drink.id - 1].quantity -= 1;
             customOrder.price += database.drinks[drink.drinkId - 1].price;
 			customOrder.selectedDrinkName = database.drinks[drink.drinkId - 1].name;
-       
+			html += `a ${customOrder.selectedDrinkName}, `
     }
 }
-    for (const toy of toys) {
-        if (toy.locationId === customOrder.selectedLocation && toy.id === customOrder.selectedToy) {
-            database.locationToys[toy.id - 1].quantity -= 1;
-            customOrder.price += database.toys[toy.toyId - 1].price;
-			customOrder.selectedToyName = database.toys[toy.toyId - 1].name;
-        
-    }
-    }
-    for (const food of foods) {
-        if (food.locationId === customOrder.selectedLocation && food.id === customOrder.selectedFood) {
-            database.locationFood[food.id - 1].quantity -= 1;
-            customOrder.price += database.food[food.foodId - 1].price;
-			customOrder.selectedFoodName = database.food[food.foodId - 1].name;
-        }
-    }
     for (const iceCream of iceCreams) {
         if (iceCream.locationId === customOrder.selectedLocation && iceCream.id === customOrder.selectedIceCream) {
             database.locationIceCream[iceCream.id - 1].quantity -= 1;
             customOrder.price += database.iceCream[iceCream.icecreamId - 1].price;
 			customOrder.selectedIceCreamName = database.iceCream[iceCream.icecreamId - 1].name;
-        }
+			html += `${customOrder.selectedIceCreamName} ice cream, `
+		}
     }
+	for (const toy of toys) {
+        if (toy.locationId === customOrder.selectedLocation && toy.id === customOrder.selectedToy) {
+            database.locationToys[toy.id - 1].quantity -= 1;
+            customOrder.price += database.toys[toy.toyId - 1].price;
+			customOrder.selectedToyName = database.toys[toy.toyId - 1].name;
+			html += `and ${customOrder.selectedToyName} `
+    }
+    }
+	customOrder.salesTax = customOrder.price * .06
+	customOrder.price += customOrder.salesTax
     database.customOrders.push(customOrder);
+	html += `for a total price of <strong>$${customOrder.price.toFixed(2)}</strong>. 
+	<br>
+	<br>
+	Your order is <strong>Order #${customOrder.orderId}</strong>. It'll be ready in 10-15 minutes. Thank you!`
     console.log(
 		database.customOrders,
 		database.orders,
@@ -209,4 +218,5 @@ export const completeOrder = () => {
 	// Broadcast custom event to entire documement so that the
 	// application can re-render and update state
 	document.dispatchEvent(new CustomEvent("stateChanged"));
+	return html
 };
