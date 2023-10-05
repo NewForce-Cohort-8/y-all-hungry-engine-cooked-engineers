@@ -37,6 +37,6 @@ document.addEventListener("change", (e) => {
 	if (e.target.id.startsWith("locations")) {
 		resetTransientState();
 		setLocation(parseInt(e.target.value));
+		resetCart();
 	}
-	resetCart();
 });

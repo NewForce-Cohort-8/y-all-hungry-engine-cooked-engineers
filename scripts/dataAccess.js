@@ -200,7 +200,7 @@ export const cartSum = (obj) => {
 	//check to see if object has a food id
 	if (Object.hasOwn(obj, "foodId")) {
 		//if it does, filter the cart to find matches to that object
-		let count = cart.filter((cartItem) => {
+		let foodCount = cart.filter((cartItem) => {
 			if (
 				cartItem.selectedFood === obj.foodId &&
 				cartItem.selectedLocation === obj.locationId
@@ -214,11 +214,11 @@ export const cartSum = (obj) => {
 			//get the length of the new filtered array with only true matches
 		}).length;
 		//return object quantity minus the length of the filtered array
-		return obj.quantity - count;
+		return obj.quantity - foodCount;
 	}
 	//rinse repeat for each type of id
 	if (Object.hasOwn(obj, "drinkId")) {
-		let count = cart.filter((cartItem) => {
+		let drinkCount = cart.filter((cartItem) => {
 			if (
 				cartItem.selectedDrink === obj.drinkId &&
 				cartItem.selectedLocation === obj.locationId
@@ -228,10 +228,10 @@ export const cartSum = (obj) => {
 				return false;
 			}
 		}).length;
-		return obj.quantity - count;
+		return obj.quantity - drinkCount;
 	}
 	if (Object.hasOwn(obj, "icecreamId")) {
-		let count = cart.filter((cartItem) => {
+		let iceCreamCount = cart.filter((cartItem) => {
 			if (
 				cartItem.selectedIceCream === obj.icecreamId &&
 				cartItem.selectedLocation === obj.locationId
@@ -241,10 +241,10 @@ export const cartSum = (obj) => {
 				return false;
 			}
 		}).length;
-		return obj.quantity - count;
+		return obj.quantity - iceCreamCount;
 	}
 	if (Object.hasOwn(obj, "toyId")) {
-		let count = cart.filter((cartItem) => {
+		let toyCount = cart.filter((cartItem) => {
 			if (
 				cartItem.selectedToy === obj.toyId &&
 				cartItem.selectedLocation === obj.locationId
@@ -254,7 +254,7 @@ export const cartSum = (obj) => {
 				return false;
 			}
 		}).length;
-		return obj.quantity - count;
+		return obj.quantity - toyCount;
 	}
 };
 
