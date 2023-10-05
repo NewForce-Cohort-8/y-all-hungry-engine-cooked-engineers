@@ -1,4 +1,5 @@
 import { getLocationDrink, setDrink, getDrinks, getTransientState } from "./dataAccess.js";
+import { database } from "./database.js";
 
 const drinks = getDrinks();
 const drinksForLocations = getLocationDrink();
@@ -20,7 +21,7 @@ export const Drinks = () => {
                             thisDrink.quantity > 0 &&
                             matchedDrink.name.toLowerCase() !== "none"
                         ) {
-                            return `<option value="${thisDrink.id}" class="option dropdown">${matchedDrink.name} (${thisDrink.quantity})</option>`;
+                            return `<option value="${thisDrink.id}" class="option dropdown">${matchedDrink.name} (${database.locationDrinks[thisDrink.id - 1].quantity})</option>`;
                         }
                         if (
                             matchedDrink.name.toLowerCase() === "none" &&

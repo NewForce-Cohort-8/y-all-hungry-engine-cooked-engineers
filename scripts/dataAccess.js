@@ -67,7 +67,7 @@ export const getLocationToys = () => {
 	return database.locationToys.map((f) => ({ ...f }));
 };
 
-const makeId = (arr) => {
+export const makeId = (arr) => {
 	if (arr.length === 0) {
 		return 1;
 	} else if (arr.length > 0) {
@@ -117,7 +117,7 @@ const makeMenuesForLocations = () => {
 			toyItemForThisLocation.toyId = toy.id;
 			toyItemForThisLocation.quantity = makeQuantity(0, 45);
 			database.locationToys.push(toyItemForThisLocation);
-
+		}
 
 		for (const icecream of icecreams) {
 			const icecreamForLocations = getLocationIceCream();
@@ -127,6 +127,7 @@ const makeMenuesForLocations = () => {
 			icecreamItemForThisLocation.icecreamId = icecream.id
 			icecreamItemForThisLocation.quantity = makeQuantity(0, 50);
 			database.locationIceCream.push(icecreamItemForThisLocation);
+		}	
 
 		for (const drink of drinks) {
 			const drinkForLocations = getLocationDrink();
@@ -148,7 +149,7 @@ export const getTransientState = () => {
 
 export const resetTransientState = () => {
 	database.transientState = {};
-}
+};
 
 export const completeOrder = () => {
 	// Broadcast custom event to entire documement so that the

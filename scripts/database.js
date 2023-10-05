@@ -4,8 +4,8 @@ export const database = {
 	locationToys: [],
 	locationIceCream: [],
     locationDrinks: [],
-
-
+	orders: [],
+	customOrders: [],
 	locations: [
 		{
 			id: 1,

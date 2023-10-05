@@ -4,6 +4,7 @@ import {
 	setFood,
 	getTransientState,
 } from "./dataAccess.js";
+import { database } from "./database.js";
 const foodForLocations = getLocationFood();
 const allFood = getFood();
 
@@ -26,7 +27,7 @@ export const FoodDropDowns = () => {
 								thisFood.quantity > 0 &&
 								matchedFood.name.toLowerCase() !== "none"
 							) {
-								return `<option value="${thisFood.id}" class="option dropdown">${matchedFood.name} (${thisFood.quantity})</option>`;
+								return `<option value="${thisFood.id}" class="option dropdown">${matchedFood.name} (${database.locationFood[thisFood.id - 1].quantity})</option>`;
 							}
 							if (
 								matchedFood.name.toLowerCase() === "none" &&

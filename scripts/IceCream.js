@@ -1,4 +1,5 @@
 import { getIceCream, setIceCream, getLocationIceCream, getTransientState} from "./dataAccess.js";
+import { database } from "./database.js";
 
 const IceCream = getIceCream();
 const icecreamForLocations = getLocationIceCream();
@@ -20,7 +21,7 @@ export const IceCreams = () => {
                     thisIceCream.quantity > 0 &&
                     matchedIceCream.name.toLowerCase() !== "none"
                   ) {
-                    return `<option value="${thisIceCream.id}" class="option dropdown">${matchedIceCream.name} (${thisIceCream.quantity})</option>`;
+                    return `<option value="${thisIceCream.id}" class="option dropdown">${matchedIceCream.name} (${database.locationIceCream[thisIceCream.id - 1].quantity})</option>`;
                   }
                   if (
                     matchedIceCream.name.toLowerCase() === "none" &&

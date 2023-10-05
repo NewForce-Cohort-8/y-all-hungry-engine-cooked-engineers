@@ -1,4 +1,5 @@
 import { getLocationToys, setToys, getToys, getTransientState } from "./dataAccess.js";
+import { database } from "./database.js";
 
 const allToys = getToys();
 const toysForLocations = getLocationToys();
@@ -28,7 +29,7 @@ export const ToysDropDowns = () => {
 							thisToy.quantity > 0 &&
 							matchedToys.name.toLowerCase() !== "none"
 						) {
-							return `<option value="${thisToy.id}" class="option dropdown">${matchedToys.name} (${thisToy.quantity})</option>`;
+							return `<option value="${thisToy.id}" class="option dropdown">${matchedToys.name} (${database.locationToys[thisToy.id - 1].quantity})</option>`;
 						}
 						if (
 							matchedToys.name.toLowerCase() === "none" &&
