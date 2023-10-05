@@ -317,7 +317,12 @@ export const completeOrder = () => {
 	order.id = makeId(database.orders);
 	order.timestamp = Date.now();
 	cart.forEach((cartItem) => makeCustomOrder(cartItem, order.id));
-
+	setOrders(order);
+	resetCart();
+	const orders = getOrders;
+	console.log(orders);
+	const customOrders = getCustomOrders();
+	console.log(customOrders);
 	resetTransientState();
 	// Broadcast custom event to entire documement so that the
 	// application can re-render and update state
