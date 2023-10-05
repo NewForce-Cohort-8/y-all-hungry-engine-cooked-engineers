@@ -4,7 +4,6 @@ import { Drinks } from "./Drinks.js";
 import { FoodDropDowns } from "./Food.js";
 import { ToysDropDowns } from "./Toys.js";
 import { Cart } from "./Cart.js";
-import { ToysDropDowns } from "./Toys.js";
 import {
 	completeOrder,
 	setLocation,
@@ -15,6 +14,7 @@ import {
 	resetTransientState,
 	getTransientState,
 	makeId,
+	resetCart,
 } from "./dataAccess.js";
 import { placeOrder } from "./Orders.js";
 
