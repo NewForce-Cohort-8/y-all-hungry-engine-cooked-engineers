@@ -5,7 +5,7 @@ const drinksForLocations = getLocationDrink();
 
 export const Drinks = () => {
 	return `<section id="drink--section">
-        <select class="btn btn-secondary dropdown-toggle" type="button">
+        <select class="btn btn-danger dropdown-toggle" type="button">
             <option value="0" class="option dropdown">Drinks</option>
             ${drinksForLocations
                 .map((thisDrink) => {

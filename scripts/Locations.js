@@ -4,7 +4,7 @@ const locations = getLocations();
 
 export const Locations = () => {
 	return `<section id="location--section">
-    <select class="btn btn-secondary dropdown-toggle" type="button" id="locations">
+    <select class="btn btn-danger dropdown-toggle" type="button" id="locations">
             <option value="0" class="option dropdown">Locations</option>
             ${locations
 							.map((location) => {

@@ -11,7 +11,7 @@ export const FoodDropDowns = () => {
 	//get info from database
 
 	return `<section id="food--section">
-	<select class="btn btn-secondary dropdown-toggle" type="button" id="food">
+	<select class="btn btn-danger dropdown-toggle" type="button" id="food">
         <option value="0" class="option dropdown">Food Items</option>
         ${foodForLocations
 					.map((thisFood) => {

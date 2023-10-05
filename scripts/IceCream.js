@@ -5,7 +5,7 @@ const icecreamForLocations = getLocationIceCream();
 
 export const IceCreams = () => {
 	return `<section id="iceCream--section">
-  <select class="btn btn-secondary dropdown-toggle" type="button" id="iceCream">
+  <select class="btn btn-danger dropdown-toggle" type="button" id="iceCream">
             <option value="0" class="option dropdown">Ice Cream</option>
             ${icecreamForLocations
               .map((thisIceCream) => {

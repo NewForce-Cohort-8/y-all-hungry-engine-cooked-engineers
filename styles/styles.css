@@ -1,5 +1,5 @@
 main {
-width: 100%;
+
 height: auto;
 }
 
@@ -23,6 +23,7 @@ body {
     object-fit: cover;
 }
 
+
 h1 {
     font-size: 30px; 
 }
@@ -39,9 +40,10 @@ h3 {
     background-color: rgb(248, 209, 103);
     border-style: dotted;
     border-color: red;
+
 }
 
-.btn-secondary {
+/* .btn-secondary {
     background-color: rgb(251, 73, 73);
     border-color: #000000;
     color: black;
@@ -64,4 +66,9 @@ h3 {
     background-color: #ffe600;
     border-color: #000000;
     color: black;
+} */
+
+
+#locationcard2 {
+ padding-bottom: 3%;
 }

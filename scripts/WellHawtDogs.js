@@ -31,7 +31,7 @@ export const WellHawtDawgs = () => {
   </div>
 </nav>
 
-    <div class="container p-5 text-center mw-100" id="locationcard2">
+    <div class="container p-5 text-center" id="locationcard2">
     <div class="card" id="hotdawgcard">
   <img src="../images/hotdawg_final.jpg" class="card-img-top" alt="..." id="hotdawgpic">
   <div class="card-body">
@@ -41,7 +41,7 @@ export const WellHawtDawgs = () => {
 </div>
   </div>
 
-  <div class="row">
+  <div class="row" id="cartandorder">
   <div class="col-sm-6 mb-3 mb-sm-0">
     <div class="card" id="hotdawgcard">
       <div class="card-body">
@@ -62,7 +62,7 @@ export const WellHawtDawgs = () => {
       <div class="card-body">
         <h5 class="card-title">In Your Cart:</h5>
         <p class="card-text">Insert cart info here.</p>
-        <a href="#" class="btn btn-primary">Order Button???</a>
+        <a href="#" class="btn btn-danger">Order Button???</a>
       </div>
     </div>
   </div>
