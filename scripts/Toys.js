@@ -1,4 +1,10 @@
-import { getLocationToys, setToys, getToys, getTransientState } from "./dataAccess.js";
+import {
+	getLocationToys,
+	setToys,
+	getToys,
+	getTransientState,
+	cartSum,
+} from "./dataAccess.js";
 
 const allToys = getToys();
 const toysForLocations = getLocationToys();
@@ -16,28 +22,32 @@ export const ToysDropDowns = () => {
 	<select class="btn btn-danger dropdown-toggle" type="button">
             <option value="0" class="option dropdown">Toys</option>
             ${toysForLocations
-				.map((thisToy) => {
-					const state = getTransientState();
-					const matchedToys = allToys.find(
-						(thatToy) => thatToy.id === thisToy.toyId
-					);
-					if (state.selectedLocation) {
-						if (
-							state.selectedLocation === thisToy.locationId &&
-							thisToy.quantity > 0 &&
-							matchedToys.name.toLowerCase() !== "none"
-						) {
-							return `<option value="${thisToy.id}" class="option dropdown">${matchedToys.name} (${thisToy.quantity})</option>`;
-						}
-						if (
-							matchedToys.name.toLowerCase() === "none" &&
-							state.selectedLocation === thisToy.locationId
-						) {
-							return `<option value="${thisToy.id}" class="option dropdown">${matchedToys.name}</option>`;
-						}
-					}
-				})
-				.join("")}
+							.map((thisToy) => {
+								const state = getTransientState();
+								const matchedToys = allToys.find(
+									(thatToy) => thatToy.id === thisToy.toyId
+								);
+								if (state.selectedLocation) {
+									if (
+										state.selectedLocation === thisToy.locationId &&
+										cartSum(thisToy) > 0 &&
+										matchedToys.name.toLowerCase() !== "none"
+									) {
+										return `<option value="${
+											thisToy.id
+										}" class="option dropdown">${matchedToys.name} (${cartSum(
+											thisToy
+										)})</option>`;
+									}
+									if (
+										matchedToys.name.toLowerCase() === "none" &&
+										state.selectedLocation === thisToy.locationId
+									) {
+										return `<option value="${thisToy.id}" class="option dropdown">${matchedToys.name}</option>`;
+									}
+								}
+							})
+							.join("")}
         </select>
     </section>`;
 };

@@ -2,14 +2,14 @@ import { Locations } from "./Locations.js";
 import { IceCreams } from "./IceCream.js";
 import { Drinks } from "./Drinks.js";
 import { FoodDropDowns } from "./Food.js";
-import { ToysDropDowns } from "./Toys.js"
-import { setLocation, resetTransientState } from "./dataAccess.js";
-
-// ${Locations()}
-// ${FoodDropDowns()}
-// ${IceCreams()}
-// ${Drinks()}
-// ${ToysDropDowns()}
+import { ToysDropDowns } from "./Toys.js";
+import { Cart } from "./Cart.js";
+import {
+	setLocation,
+	resetTransientState,
+	resetCart,
+	getTransientState,
+} from "./dataAccess.js";
 
 export const WellHawtDawgs = () => {
 	return `
@@ -53,7 +53,9 @@ export const WellHawtDawgs = () => {
         <h3> Step 4: Pick your dessert </h3>
         ${IceCreams()}
         <h3> Step 5: Pick your toy </h3>
-        ${ToysDropDowns()}</p>
+        ${ToysDropDowns()}
+        <h3> Confirm your order: </h3>
+        ${Cart()} 
       </div>
     </div>
   </div>
@@ -61,7 +63,7 @@ export const WellHawtDawgs = () => {
     <div class="card" id="hotdawgcard">
       <div class="card-body">
         <h5 class="card-title">In Your Cart:</h5>
-        <p class="card-text">Insert cart info here.</p>
+        <p class="card-text">
         <a href="#" class="btn btn-danger">Order Button???</a>
       </div>
     </div>
@@ -70,15 +72,12 @@ export const WellHawtDawgs = () => {
 
 `
 
-
-
-    
 };
 
 document.addEventListener("change", (e) => {
 	if (e.target.id.startsWith("locations")) {
-        resetTransientState();
+		resetTransientState();
 		setLocation(parseInt(e.target.value));
+		resetCart();
 	}
-   
 });
