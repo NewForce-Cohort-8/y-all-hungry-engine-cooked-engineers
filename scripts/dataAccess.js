@@ -151,8 +151,58 @@ export const resetTransientState = () => {
 	database.transientState = {};
 };
 
+const foods = getLocationFood();
+const drinks = getLocationDrink();
+const iceCreams = getIceCream();
+const toys = getToys();
+
 export const completeOrder = () => {
 	// Broadcast custom event to entire documement so that the
 	// application can re-render and update state
+	const state = getTransientState();
+    let customOrder = state;
+    customOrder.id = makeId(database.customOrders);
+    customOrder.orderId = makeId(database.orders);
+    customOrder.price = 0;
+    let order = {};
+    order.id = makeId(database.orders)
+    order.orderId = customOrder.orderId
+    order.name = `Order #${order.orderId}`
+    order.timestamp = Date.now();
+    database.orders.push(order);
+    console.log(database.customOrders);
+    for (const drink of drinks) {
+        if (drink.locationId === customOrder.selectedLocation && drink.id === customOrder.selectedDrink) {
+            database.locationDrinks[drink.id - 1].quantity -= 1;
+            customOrder.price += database.drinks[drink.drinkId - 1].price;
+       
+    }
+}
+    for (const toy of toys) {
+        if (toy.locationId === customOrder.selectedLocation && toy.id === customOrder.selectedToy) {
+            database.locationToys[toy.id - 1].quantity -= 1;
+            customOrder.price += database.toys[toy.toyId - 1].price;
+        
+    }
+    }
+    for (const food of foods) {
+        if (food.locationId === customOrder.selectedLocation && food.id === customOrder.selectedFood) {
+            database.locationFood[food.id - 1].quantity -= 1;
+            customOrder.price += database.food[food.foodId - 1].price;
+        }
+    }
+    for (const iceCream of iceCreams) {
+        if (iceCream.locationId === customOrder.selectedLocation && iceCream.id === customOrder.selectedIceCream) {
+            database.locationIceCream[iceCream.id - 1].quantity -= 1;
+            customOrder.price += database.iceCream[iceCream.icecreamId - 1].price;
+        }
+    }
+    database.customOrders.push(customOrder);
+    console.log(
+        database.locationFood,
+        database.locationIceCream,
+        database.locationDrinks,
+        database.locationToys);
+    resetTransientState();
 	document.dispatchEvent(new CustomEvent("stateChanged"));
 };
