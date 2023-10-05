@@ -5,7 +5,8 @@ export const database = {
 	locationIceCream: [],
 	locationDrinks: [],
 	cart: [],
-
+	orders: [],
+	customOrders: [],
 	locations: [
 		{
 			id: 1,

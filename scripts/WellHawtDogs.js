@@ -4,12 +4,19 @@ import { Drinks } from "./Drinks.js";
 import { FoodDropDowns } from "./Food.js";
 import { ToysDropDowns } from "./Toys.js";
 import { Cart } from "./Cart.js";
+import { ToysDropDowns } from "./Toys.js";
 import {
+	completeOrder,
 	setLocation,
+	getLocationDrink,
+	getLocationFood,
+	getLocationIceCream,
+	getLocationToys,
 	resetTransientState,
-	resetCart,
 	getTransientState,
+	makeId,
 } from "./dataAccess.js";
+import { placeOrder } from "./Orders.js";
 
 export const WellHawtDawgs = () => {
 	return `
@@ -28,8 +35,10 @@ export const WellHawtDawgs = () => {
     <h2>Toy Options</h2>
     ${ToysDropDowns()}
 
+
     <h2>Cart</h2>
     ${Cart()}
+    ${placeOrder()}
 `;
 };
 
@@ -38,5 +47,13 @@ document.addEventListener("change", (e) => {
 		resetTransientState();
 		setLocation(parseInt(e.target.value));
 		resetCart();
+	}
+});
+
+document.addEventListener("click", (e) => {
+	if (e.target.id === "order-btn") {
+		const doesThisWork = completeOrder();
+		const orderSummary = document.getElementById("order-summary");
+		orderSummary.innerHTML = doesThisWork;
 	}
 });
