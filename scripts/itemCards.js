@@ -36,7 +36,7 @@ export const ImageCards = ( ) => {
       return makeImgCards(matchedDrinks)}
    else if (!state.selectedDrink) {return ""}
     }).join('');
-  }
+  } 
 
   let foodCard = ""
   if (state.selectedLocation) 
@@ -74,5 +74,5 @@ export const ImageCards = ( ) => {
     }).join('');
     }
   return foodCard + drinkCard + iceCreamCard + toyCard
-}
+} else { return ""}
 }
