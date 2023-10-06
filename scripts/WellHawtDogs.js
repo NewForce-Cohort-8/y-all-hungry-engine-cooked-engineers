@@ -3,16 +3,22 @@ import { IceCreams } from "./IceCream.js";
 import { Drinks } from "./Drinks.js";
 import { FoodDropDowns } from "./Food.js";
 import { ToysDropDowns } from "./Toys.js";
-import { Cart } from "./Cart.js";
+import { AddToCartButton } from "./Cart.js";
+import { PlaceOrderButton } from "./Orders.js";
+import { CartSummary } from "./CartSummary.js";
+import { OrderSummary } from "./OrderSummary.js";
 import {
 	setLocation,
 	resetTransientState,
 	resetCart,
-	getTransientState,
+	getCart,
+	getOrders,
 } from "./dataAccess.js";
 
 export const WellHawtDawgs = () => {
-	return `
+	const cart = getCart();
+	const orders = getOrders();
+	let html = `
     <h1>Well HOT Dawgs!</h1>
     ${Locations()}
 
@@ -27,16 +33,25 @@ export const WellHawtDawgs = () => {
     
     <h2>Toy Options</h2>
     ${ToysDropDowns()}
+    ${AddToCartButton()}`;
 
-    <h2>Cart</h2>
-    ${Cart()}
-`;
+	if (cart.length > 0) {
+		html += `<h2>Cart</h2>
+    ${CartSummary()} ${PlaceOrderButton()}`;
+	}
+
+	if (orders.length > 0) {
+		html += `<h2>Order History</h2>
+    ${OrderSummary()}`;
+	}
+
+	return html;
 };
 
 document.addEventListener("change", (e) => {
 	if (e.target.id.startsWith("locations")) {
+		resetCart();
 		resetTransientState();
 		setLocation(parseInt(e.target.value));
-		resetCart();
 	}
 });
