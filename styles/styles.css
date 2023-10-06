@@ -61,3 +61,7 @@ h3 {
 #cartrow {
     padding-top: 2%;
 }
+
+.card-photo{
+	max-width: 20em;
+}

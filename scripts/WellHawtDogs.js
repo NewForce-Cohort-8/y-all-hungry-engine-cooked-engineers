@@ -14,6 +14,7 @@ import {
 	getCart,
 	getOrders,
 } from "./dataAccess.js";
+import { ImageCards } from "./itemCards.js";
 
 export const WellHawtDawgs = () => {
 
@@ -65,31 +66,36 @@ export const WellHawtDawgs = () => {
   <div class="col-sm-6 mb-3 mb-sm-0">
   <div class="card" id="hotdawgcard">
     <div class="card-body">
-      <h5 class="card-title"> Images Go Here </h5>
+      <h5 class="card-title"> Your Selections: </h5>
     </div>
+    ${ImageCards()}
   </div> 
-</div>
+</div> `
   
-  <div class="row" id="cartrow">
-    <div class="card" id="hotdawgcard">
-      <div class="card-body">
-        <h5 class="card-title"></h5> `
         const cart = getCart();
 	      const orders = getOrders();
     if (cart.length > 0) {
-      html += `<h2>Cart</h2>
-      ${CartSummary()} ${PlaceOrderButton()}`;
+      html += `   <div class="row" id="cartrow">
+      <div class="card" id="hotdawgcard">
+        <div class="card-body">
+         <h2>Cart</h2> 
+      ${CartSummary()} ${PlaceOrderButton()} 
+       </div>
+      </div>
+    </div>`;
     }
   
     if (orders.length > 0) {
-      html += `<h2>Order History</h2>
-      ${OrderSummary()}`;
-    }
-       html += ` <p class="card-text">
+      html += `<div class="row" id="cartrow">
+      <div class="card" id="hotdawgcard">
+        <div class="card-body"> 
+        <h2>Order History</h2>
+      ${OrderSummary()} 
       </div>
-    </div>
-  </div>
-</div> `
+      </div>
+    </div>`;
+    }
+       html += `</div>`
 
 return html;
 };
