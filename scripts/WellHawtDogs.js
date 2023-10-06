@@ -14,6 +14,7 @@ import {
 	getCart,
 	getOrders,
 } from "./dataAccess.js";
+import { ImageCards } from "./itemCards.js";
 
 export const WellHawtDawgs = () => {
 	const cart = getCart();
@@ -33,7 +34,10 @@ export const WellHawtDawgs = () => {
     
     <h2>Toy Options</h2>
     ${ToysDropDowns()}
-    ${AddToCartButton()}`;
+    ${AddToCartButton()}
+
+    <div></div>
+    ${ImageCards()}`;
 
 	if (cart.length > 0) {
 		html += `<h2>Cart</h2>
