@@ -18,7 +18,7 @@ export const makeImgCards = (obj) =>{
     <div class="card-body">
     <h5 class="name">${obj.name}</h5>
     <p class="desc">${obj.desc}</p>
-    <h5 class="price">${obj.price}</h5>
+    <h5 class="price">${obj.price.toFixed(2)}</h5>
     </div>
     </div>`;
   };
@@ -36,7 +36,7 @@ export const ImageCards = ( ) => {
       return makeImgCards(matchedDrinks)}
    else if (!state.selectedDrink) {return ""}
     }).join('');
-  }
+  } 
 
   let foodCard = ""
   if (state.selectedLocation) 
@@ -74,5 +74,5 @@ export const ImageCards = ( ) => {
     }).join('');
     }
   return foodCard + drinkCard + iceCreamCard + toyCard
-}
+} else { return ""}
 }

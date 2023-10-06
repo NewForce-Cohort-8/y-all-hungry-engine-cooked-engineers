@@ -19,8 +19,7 @@ const displayToys = () => {
 
 export const ToysDropDowns = () => {
 	return `<section id="toy--section">
-        <label for="toys">Select a toy for your order</label>
-        <select name="toys" id="toys" class="options dropdown">
+	<select class="btn btn-danger dropdown-toggle" type="button" id="toys">
             <option value="0" class="option dropdown">Toys</option>
             ${toysForLocations
 							.map((thisToy) => {
