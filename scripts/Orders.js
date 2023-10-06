@@ -1,13 +1,18 @@
-import { database } from "./database.js";
+import { getCart, completeOrder } from "./dataAccess.js";
+import { OrderNameForm } from "./OrderName.js";
 
-export const placeOrder = () => {
-    let html = ``
+export const PlaceOrderButton = () => {
+	const cart = getCart();
 
-    if (database.transientState.selectedFood && database.transientState.selectedDrink && database.transientState.selectedIceCream && database.transientState.selectedToy) {
-        html += `<button id="order-btn">Complete Order</button>`
-        }
-    
-    html += `<br>
-    <div id="order-summary"></div>`
-    return html
-}
+	if (cart.length > 0) {
+		return `${OrderNameForm()}<button id="order-btn">Complete Order</button>`;
+	} else {
+		return "";
+	}
+};
+
+document.addEventListener("click", (e) => {
+	if (e.target.id.startsWith("order-btn")) {
+		completeOrder();
+	}
+});
