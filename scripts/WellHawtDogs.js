@@ -10,6 +10,7 @@ import {
 	resetCart,
 	getTransientState,
 } from "./dataAccess.js";
+import { ImageCards } from "./itemCards.js";
 
 export const WellHawtDawgs = () => {
 	return `
@@ -30,6 +31,9 @@ export const WellHawtDawgs = () => {
 
     <h2>Cart</h2>
     ${Cart()}
+    <div id="cartDiv">
+    ${ImageCards()}
+    </div>
 `;
 };
 
