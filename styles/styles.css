@@ -8,3 +8,7 @@
 	flex-direction: row;
 	gap: 2em;
 }
+
+.card-photo{
+	max-width: 3em;
+}
