@@ -1,0 +1,10 @@
+#cart-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+.cart-item {
+	display: flex;
+	flex-direction: row;
+	gap: 2em;
+}
