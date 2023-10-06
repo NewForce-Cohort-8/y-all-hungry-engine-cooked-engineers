@@ -1,5 +1,4 @@
 main {
-
 height: auto;
 }
 
@@ -43,32 +42,22 @@ h3 {
 
 }
 
-/* .btn-secondary {
-    background-color: rgb(251, 73, 73);
-    border-color: #000000;
-    color: black;
-}
-
-.btn-secondary:hover {
-    background-color: #ffe600;
-    border-color: #000000;
-    color: black;
-}
-
-.btn-primary {
-    background-color: rgb(255, 71, 71);
-    border-color: #000000;
-    color: black;
-}
-
-.btn-primary:hover {
-    color: #212529;
-    background-color: #ffe600;
-    border-color: #000000;
-    color: black;
-} */
-
-
 #locationcard2 {
  padding-bottom: 3%;
+}
+
+#cart-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+
+.cart-item {
+	display: flex;
+	flex-direction: row;
+	gap: 2em;
+}
+
+#cartrow {
+    padding-top: 2%;
 }

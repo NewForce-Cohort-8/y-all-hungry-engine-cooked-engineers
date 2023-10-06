@@ -5,6 +5,7 @@ import {
 	getTransientState,
 	cartSum,
 } from "./dataAccess.js";
+import { database } from "./database.js";
 const foodForLocations = getLocationFood();
 const allFood = getFood();
 

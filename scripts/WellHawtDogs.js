@@ -3,17 +3,21 @@ import { IceCreams } from "./IceCream.js";
 import { Drinks } from "./Drinks.js";
 import { FoodDropDowns } from "./Food.js";
 import { ToysDropDowns } from "./Toys.js";
-import { Cart } from "./Cart.js";
+import { AddToCartButton } from "./Cart.js";
+import { PlaceOrderButton } from "./Orders.js";
+import { CartSummary } from "./CartSummary.js";
+import { OrderSummary } from "./OrderSummary.js";
 import {
 	setLocation,
 	resetTransientState,
 	resetCart,
-	getTransientState,
+	getCart,
+	getOrders,
 } from "./dataAccess.js";
 
 export const WellHawtDawgs = () => {
-	return `
 
+	let html = `
   <nav class="navbar">
   <div class="container">
   <a class="navbar-brand" href="#">
@@ -54,30 +58,46 @@ export const WellHawtDawgs = () => {
         ${IceCreams()}
         <h3> Step 5: Pick your toy </h3>
         ${ToysDropDowns()}
-        <h3> Confirm your order: </h3>
-        ${Cart()} 
+        ${AddToCartButton()}
       </div>
-    </div>
+    </div> 
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-6 mb-3 mb-sm-0">
+  <div class="card" id="hotdawgcard">
+    <div class="card-body">
+      <h5 class="card-title"> Images Go Here </h5>
+    </div>
+  </div> 
+</div>
+  
+  <div class="row" id="cartrow">
     <div class="card" id="hotdawgcard">
       <div class="card-body">
-        <h5 class="card-title">In Your Cart:</h5>
-        <p class="card-text">
-        <a href="#" class="btn btn-danger">Order Button???</a>
+        <h5 class="card-title"></h5> `
+        const cart = getCart();
+	      const orders = getOrders();
+    if (cart.length > 0) {
+      html += `<h2>Cart</h2>
+      ${CartSummary()} ${PlaceOrderButton()}`;
+    }
+  
+    if (orders.length > 0) {
+      html += `<h2>Order History</h2>
+      ${OrderSummary()}`;
+    }
+       html += ` <p class="card-text">
       </div>
     </div>
   </div>
-</div>
+</div> `
 
-`
-
+return html;
 };
 
 document.addEventListener("change", (e) => {
 	if (e.target.id.startsWith("locations")) {
+		resetCart();
 		resetTransientState();
 		setLocation(parseInt(e.target.value));
-		resetCart();
 	}
 });
